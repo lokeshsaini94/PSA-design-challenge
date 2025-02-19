@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/presentation/card_view/grading_confirmation.dart';
 
-Container submitButton() {
+Container submitButton(BuildContext context) {
   return Container(
     width: double.infinity,
-    height: 72,
+    height: 60,
     padding: const EdgeInsets.symmetric(horizontal: 16),
     child: ElevatedButton(
       style: ElevatedButton.styleFrom(
@@ -11,8 +12,12 @@ Container submitButton() {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
       ),
       onPressed: () {
-        // Add your onPressed code here!
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => GradingConfirmation()),
+        );
       },
+
       child: Text(
         'Submit for Grading',
         style: TextStyle(

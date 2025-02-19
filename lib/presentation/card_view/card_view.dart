@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:psa_task/presentation/card_view/widgets/auctionPrice.dart';
-import 'package:psa_task/presentation/card_view/widgets/card_image.dart';
-import 'package:psa_task/presentation/card_view/widgets/card_title.dart';
-import 'package:psa_task/presentation/card_view/widgets/collectors.dart';
-import 'package:psa_task/presentation/card_view/widgets/divider.dart';
-import 'package:psa_task/presentation/card_view/widgets/price_estimate.dart';
-import 'package:psa_task/presentation/card_view/widgets/price_estimate_title.dart';
-import 'package:psa_task/presentation/card_view/widgets/sales_history.dart';
-import 'package:psa_task/presentation/card_view/widgets/submit_button.dart';
-import 'package:psa_task/presentation/card_view/widgets/top_action_buttons.dart';
+import 'package:psa_task/presentation/card_view/widgets/auction_price_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/card_image_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/card_title_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/collectors_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/divider_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/price_estimate_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/price_estimate_title_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/sales_history_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/submit_button_widget.dart';
+import 'package:psa_task/presentation/card_view/widgets/top_action_buttons_widget.dart';
+import 'package:psa_task/util/show_up_widget.dart';
 
 Future<dynamic> cardViewSheet(BuildContext context, int index) {
+  int delayAmount = 200;
+
   return showModalBottomSheet(
     backgroundColor: Colors.white,
     context: context,
@@ -60,15 +63,21 @@ Future<dynamic> cardViewSheet(BuildContext context, int index) {
                       children: [
                         topAactionButtons(context),
                         SizedBox(height: 16),
-                        cardImage(),
+                        ShowUp(delay: delayAmount, child: cardImage()),
                         SizedBox(height: 8),
-                        cardTitle(),
-                        priceEstimateTitle(),
-                        priceEstimate(),
+                        ShowUp(delay: delayAmount + 100, child: cardTitle()),
+                        ShowUp(
+                          delay: delayAmount + 200,
+                          child: priceEstimateTitle(),
+                        ),
+                        ShowUp(
+                          delay: delayAmount + 200,
+                          child: priceEstimate(),
+                        ),
                         SizedBox(height: 16),
-                        divider(),
+                        ShowUp(delay: delayAmount + 200, child: divider()),
                         SizedBox(height: 16),
-                        salesHistory(),
+                        ShowUp(delay: delayAmount + 300, child: salesHistory()),
                         SizedBox(height: 16),
                         divider(),
                         SizedBox(height: 16),
@@ -79,7 +88,7 @@ Future<dynamic> cardViewSheet(BuildContext context, int index) {
                         SizedBox(height: 16),
                         divider(),
                         SizedBox(height: 32),
-                        submitButton(),
+                        submitButton(context),
                         SizedBox(height: 32),
                       ],
                     ),
