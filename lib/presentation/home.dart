@@ -1,11 +1,20 @@
+import 'package:countup/countup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
+import 'package:psa_task/presentation/camera_screen/camera_screen.dart';
 import 'package:psa_task/presentation/card_view/card_view.dart';
+import 'package:psa_task/presentation/search/search_screen.dart';
+import 'package:psa_task/util/custom_page_route.dart';
 import 'package:psa_task/util/show_up_widget.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
-class Home extends StatelessWidget {
+//todo Card view card becomes bigger and takes spaces
+//  card automatic little spin
+// swipe animation for each card
+
+class Home extends StatefulWidget {
   const Home({super.key});
 
   static const List<String> pokemonCardsImages = [
@@ -29,12 +38,7 @@ class Home extends StatelessWidget {
     "\$531.70",
   ];
 
-  static const List<String> pokemonCardsValueChange = [
-    "26.5%",
-    "2.7%",
-    "1.2%",
-    "7.2%",
-  ];
+  static const List<double> pokemonCardsValueChange = [26.5, 2.7, 1.2, 7.2];
 
   static const List<IconData> pokemonCardsValueChangeIcons = [
     Icons.arrow_upward,
@@ -44,22 +48,27 @@ class Home extends StatelessWidget {
   ];
 
   static const List<Color> pokemonCardsValueChangeColors = [
-    Color(0xFF039855),
-    Color(0xFFDA2D20),
-    Color(0xFFDA2D20),
-    Color(0xFF039855),
+    ColorsPSA.textSuccess,
+    ColorsPSA.textError,
+    ColorsPSA.textError,
+    ColorsPSA.textSuccess,
   ];
 
   @override
+  State<Home> createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  @override
   Widget build(BuildContext context) {
-    int delayAmount = 200;
+    int delayAmount = 100;
 
     return DefaultTabController(
       length: 4,
       child: Scaffold(
         appBar: AppBar(
           toolbarHeight: 110,
-          backgroundColor: Color(0xFFEB1C2D),
+          backgroundColor: ColorsPSA.primary,
           title: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -83,12 +92,20 @@ class Home extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Icon(Icons.search, color: Colors.white, size: 32),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => SearchScreen()),
+                      );
+                    },
+                    child: Icon(Icons.search, color: Colors.white, size: 32),
+                  ),
                 ],
               ),
               SizedBox(height: 12),
               TabBar(
-                labelColor: Color(0xFFEB1C2D),
+                labelColor: ColorsPSA.primary,
                 indicatorColor: Colors.transparent,
                 labelPadding: EdgeInsets.zero,
                 dividerColor: Colors.transparent,
@@ -129,7 +146,7 @@ class Home extends StatelessWidget {
           ),
         ),
         body: Container(
-          color: Color(0xFFFAFAFA),
+          color: ColorsPSA.surfacePrimary,
           child: Column(
             children: [
               Expanded(
@@ -139,22 +156,28 @@ class Home extends StatelessWidget {
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFFFFFFFF),
-                              minimumSize: Size(double.infinity, 48),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(5),
-                                side: BorderSide(color: Color(0xFFEAEAEA)),
+                          ShowUp(
+                            delay: delayAmount,
+                            child: ElevatedButton(
+                              onPressed: () {},
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: ColorsPSA.white,
+                                minimumSize: Size(double.infinity, 48),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(5),
+                                  side: BorderSide(
+                                    color: ColorsPSA.borderSecondary,
+                                  ),
+                                ),
+                                elevation: 4,
+                                shadowColor: Colors.black.withOpacity(0.2),
                               ),
-                              elevation: 0,
-                            ),
-                            child: Text(
-                              'Add to Collection',
-                              style: TextStyle(
-                                color: Color(0xFF212121),
-                                fontWeight: FontWeight.bold,
+                              child: Text(
+                                'Add to Collection',
+                                style: TextStyle(
+                                  color: ColorsPSA.textPrimary,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
                           ),
@@ -172,7 +195,9 @@ class Home extends StatelessWidget {
                                         context: context,
                                         builder: (BuildContext context) {
                                           return CupertinoActionSheet(
-                                            title: Text(pokemonCards[index]),
+                                            title: Text(
+                                              Home.pokemonCards[index],
+                                            ),
                                             cancelButton:
                                                 CupertinoActionSheetAction(
                                                   child: Text('Dismiss'),
@@ -212,16 +237,18 @@ class Home extends StatelessWidget {
                                                 Text(
                                                   'UNGRADED',
                                                   style: TextStyle(
-                                                    color: Color(0xFF6C6E6F),
+                                                    color:
+                                                        ColorsPSA.textTertiary,
                                                     fontWeight: FontWeight.w800,
                                                     fontSize: 12,
                                                   ),
                                                 ),
                                                 SizedBox(height: 4),
                                                 Text(
-                                                  pokemonCards[index],
+                                                  Home.pokemonCards[index],
                                                   style: TextStyle(
-                                                    color: Color(0xFF212121),
+                                                    color:
+                                                        ColorsPSA.textPrimary,
                                                     fontWeight: FontWeight.w600,
                                                     fontSize: 14,
                                                   ),
@@ -232,11 +259,11 @@ class Home extends StatelessWidget {
                                                       MainAxisAlignment.start,
                                                   children: [
                                                     Text(
-                                                      pokemonCardsValue[index],
+                                                      Home.pokemonCardsValue[index],
                                                       style: TextStyle(
-                                                        color: Color(
-                                                          0xFF212121,
-                                                        ),
+                                                        color:
+                                                            ColorsPSA
+                                                                .textPrimary,
                                                         fontWeight:
                                                             FontWeight.w800,
                                                         fontSize: 16,
@@ -244,18 +271,25 @@ class Home extends StatelessWidget {
                                                     ),
                                                     SizedBox(width: 6),
                                                     Icon(
-                                                      pokemonCardsValueChangeIcons[index],
+                                                      Home.pokemonCardsValueChangeIcons[index],
                                                       color:
-                                                          pokemonCardsValueChangeColors[index],
+                                                          Home.pokemonCardsValueChangeColors[index],
                                                       size: 16,
                                                     ),
-                                                    Text(
-                                                      pokemonCardsValueChange[index],
+                                                    Countup(
+                                                      begin: 0,
+                                                      end:
+                                                          Home.pokemonCardsValueChange[index],
+                                                      duration: Duration(
+                                                        seconds: 1,
+                                                      ),
+                                                      separator: '.',
+                                                      suffix: "%",
                                                       style: TextStyle(
                                                         fontWeight:
                                                             FontWeight.bold,
                                                         color:
-                                                            pokemonCardsValueChangeColors[index],
+                                                            Home.pokemonCardsValueChangeColors[index],
                                                       ),
                                                     ),
                                                   ],
@@ -281,10 +315,9 @@ class Home extends StatelessWidget {
                 ),
               ),
               Container(
-                //color: Color(0xFFFAFAFA),
                 padding: EdgeInsets.symmetric(vertical: 10),
                 decoration: BoxDecoration(
-                  color: Color(0xFFFAFAFA),
+                  color: ColorsPSA.surfacePrimary,
                   boxShadow: [
                     BoxShadow(
                       color: Colors.black.withOpacity(0.1),
@@ -314,21 +347,24 @@ class Home extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Column(
-                        children: [
-                          Container(
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              color: Colors.black,
-                            ),
-                            padding: EdgeInsets.all(16),
-                            child: SvgPicture.asset(
-                              'assets/icons/scan-camera.svg',
-                              width: 32,
-                              height: 32,
-                            ),
+                      GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            CustomAnimatedRoute(enterWidget: CameraScreen()),
+                          );
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Colors.black,
                           ),
-                        ],
+                          padding: EdgeInsets.all(16),
+                          child: SvgPicture.asset(
+                            'assets/icons/scan-camera.svg',
+                            width: 32,
+                            height: 32,
+                          ),
+                        ),
                       ),
                       Column(
                         children: [

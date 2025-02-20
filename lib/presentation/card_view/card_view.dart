@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 import 'package:psa_task/presentation/card_view/widgets/auction_price_widget.dart';
 import 'package:psa_task/presentation/card_view/widgets/card_image_widget.dart';
 import 'package:psa_task/presentation/card_view/widgets/card_title_widget.dart';
@@ -9,11 +10,8 @@ import 'package:psa_task/presentation/card_view/widgets/price_estimate_title_wid
 import 'package:psa_task/presentation/card_view/widgets/sales_history_widget.dart';
 import 'package:psa_task/presentation/card_view/widgets/submit_button_widget.dart';
 import 'package:psa_task/presentation/card_view/widgets/top_action_buttons_widget.dart';
-import 'package:psa_task/util/show_up_widget.dart';
 
 Future<dynamic> cardViewSheet(BuildContext context, int index) {
-  int delayAmount = 200;
-
   return showModalBottomSheet(
     backgroundColor: Colors.white,
     context: context,
@@ -51,7 +49,7 @@ Future<dynamic> cardViewSheet(BuildContext context, int index) {
                       width: 40,
                       height: 4,
                       decoration: BoxDecoration(
-                        color: Color(0xFFBABABA),
+                        color: ColorsPSA.textDisabled,
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -63,32 +61,26 @@ Future<dynamic> cardViewSheet(BuildContext context, int index) {
                       children: [
                         topAactionButtons(context),
                         SizedBox(height: 16),
-                        ShowUp(delay: delayAmount, child: cardImage()),
+                        cardImage(),
                         SizedBox(height: 8),
-                        ShowUp(delay: delayAmount + 100, child: cardTitle()),
-                        ShowUp(
-                          delay: delayAmount + 200,
-                          child: priceEstimateTitle(),
-                        ),
-                        ShowUp(
-                          delay: delayAmount + 200,
-                          child: priceEstimate(),
-                        ),
-                        SizedBox(height: 16),
-                        ShowUp(delay: delayAmount + 200, child: divider()),
-                        SizedBox(height: 16),
-                        ShowUp(delay: delayAmount + 300, child: salesHistory()),
+                        cardTitle(),
+                        priceEstimateTitle(),
+                        priceEstimate(),
                         SizedBox(height: 16),
                         divider(),
                         SizedBox(height: 16),
-                        auctionPrice(),
+                        salesHistory(),
+                        SizedBox(height: 16),
+                        divider(),
+                        SizedBox(height: 16),
+                        AuctionPriceWidget(),
                         SizedBox(height: 16),
                         divider(),
                         collectors(),
                         SizedBox(height: 16),
                         divider(),
                         SizedBox(height: 32),
-                        submitButton(context),
+                        SubmitButtonWidget(),
                         SizedBox(height: 32),
                       ],
                     ),

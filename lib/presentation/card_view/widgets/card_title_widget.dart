@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 
 Container cardTitle() {
   return Container(
@@ -23,7 +24,7 @@ Container cardTitle() {
                   'Charizard - Holo #4',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: ColorsPSA.textPrimary,
                     fontSize: 24,
                     fontFamily: 'Area Normal',
                     fontWeight: FontWeight.w800,
@@ -38,7 +39,7 @@ Container cardTitle() {
                   '1999 Pokemon Game 1st Edition',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFF6C6E6F),
+                    color: ColorsPSA.textTertiary,
                     fontSize: 15,
                     fontFamily: 'Area Normal',
                     fontWeight: FontWeight.bold,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 
 Column collectors() {
   return Column(
@@ -10,7 +11,7 @@ Column collectors() {
         child: Text(
           'Collectors',
           style: TextStyle(
-            color: Color(0xFF48494A),
+            color: ColorsPSA.textSecondary,
             fontSize: 17,
             fontFamily: 'Area Normal',
             fontWeight: FontWeight.w800,
@@ -42,7 +43,7 @@ Column collectors() {
                     names[index],
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF48494A),
+                      color: ColorsPSA.textSecondary,
                       fontSize: 15,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.w800,
@@ -54,7 +55,7 @@ Column collectors() {
                     status[index],
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: Color(0xFF6C6E6F),
+                      color: ColorsPSA.textTertiary,
                       fontSize: 13,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.bold,
@@ -91,7 +92,7 @@ Column collectors() {
                   Text(
                     'Show 200 more collectors',
                     style: TextStyle(
-                      color: Color(0xFF48494A),
+                      color: ColorsPSA.textSecondary,
                       fontSize: 15,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.w800,

@@ -21,7 +21,7 @@ Container cardImage() {
           interval: Duration(seconds: 0),
           child: Image.asset(
             'assets/images/card_front.png',
-            height: 300,
+            height: 400,
             fit: BoxFit.cover,
           ),
         ),
@@ -42,7 +42,7 @@ Container cardImage() {
           interval: Duration(seconds: 0),
           child: Image.asset(
             'assets/images/card_back.png',
-            height: 300,
+            height: 400,
             fit: BoxFit.cover,
           ),
         ),

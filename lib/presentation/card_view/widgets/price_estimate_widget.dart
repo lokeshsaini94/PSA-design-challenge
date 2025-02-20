@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:use_scramble/use_scramble.dart';
 
 Container priceEstimate() {
   return Container(
@@ -34,8 +35,13 @@ Container priceEstimate() {
                     ),
                   ),
                   const SizedBox(height: 6),
-                  Text(
-                    '\$3,565.90',
+                  TextScramble(
+                    text: '\$3,565.90',
+                    speed: Duration(milliseconds: 40),
+                    chars: '0123456789',
+                    correctCharProbability:
+                        0.1, // Correct character probability in [0, 1]
+                    scrambleCycles: 2, // Number of times to scramble the text
                     style: TextStyle(
                       color: Color(0xFF48494A),
                       fontSize: 17,
@@ -87,8 +93,13 @@ Container priceEstimate() {
                     ),
                   ),
                   const SizedBox(height: 6),
-                  Text(
-                    '\$319,999',
+                  TextScramble(
+                    text: '\$319,999',
+                    speed: Duration(milliseconds: 100),
+                    chars: '0123456789',
+                    correctCharProbability:
+                        0.1, // Correct character probability in [0, 1]
+                    scrambleCycles: 2, // Number of times to scramble the text
                     style: TextStyle(
                       color: Color(0xFF48494A),
                       fontSize: 17,
@@ -140,8 +151,13 @@ Container priceEstimate() {
                     ),
                   ),
                   const SizedBox(height: 6),
-                  Text(
-                    '\$17,500',
+                  TextScramble(
+                    text: '\$17,500',
+                    speed: Duration(milliseconds: 30),
+                    chars: '0123456789',
+                    correctCharProbability:
+                        0.1, // Correct character probability in [0, 1]
+                    scrambleCycles: 2, // Number of times to scramble the text
                     style: TextStyle(
                       color: Color(0xFF48494A),
                       fontSize: 17,
@@ -193,8 +209,13 @@ Container priceEstimate() {
                     ),
                   ),
                   const SizedBox(height: 6),
-                  Text(
-                    '\$7,592.69',
+                  TextScramble(
+                    text: '\$7,592.69',
+                    speed: Duration(milliseconds: 30),
+                    chars: '0123456789',
+                    correctCharProbability:
+                        0.1, // Correct character probability in [0, 1]
+                    scrambleCycles: 2, // Number of times to scramble the text
                     style: TextStyle(
                       color: Color(0xFF48494A),
                       fontSize: 17,

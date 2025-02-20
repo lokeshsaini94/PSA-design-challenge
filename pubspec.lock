@@ -49,6 +49,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.19.1"
+  countup:
+    dependency: "direct main"
+    description:
+      name: countup
+      sha256: "3a7509b20170fd78ff9553848016465d34fdbc4ce8adb3d5361be80592b92675"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.4"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -272,6 +280,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.4.0"
+  use_scramble:
+    dependency: "direct main"
+    description:
+      name: use_scramble
+      sha256: d075d19f1e7cf90bfa9a55dda74f4f222406bbdeaf6f4507444a26b37b8d1750
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.6"
   vector_graphics:
     dependency: transitive
     description:

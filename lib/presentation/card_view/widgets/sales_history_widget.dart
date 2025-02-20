@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 
 Container salesHistory() {
   return Container(
@@ -12,7 +13,7 @@ Container salesHistory() {
           child: Text(
             'Sales History',
             style: TextStyle(
-              color: Color(0xFF48494A),
+              color: ColorsPSA.textSecondary,
               fontSize: 17,
               fontFamily: 'Area Normal',
               fontWeight: FontWeight.w800,
@@ -31,29 +32,11 @@ Container salesHistory() {
               Container(
                 width: 56,
                 height: 56,
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFFAFAFA),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/sales_image1.png"),
+                    fit: BoxFit.fill,
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/sales_image1.png"),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
               const SizedBox(width: 16),
@@ -66,7 +49,7 @@ Container salesHistory() {
                     Text(
                       'Auction',
                       style: TextStyle(
-                        color: Color(0xFF48494A),
+                        color: ColorsPSA.textSecondary,
                         fontSize: 15,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w800,
@@ -78,7 +61,7 @@ Container salesHistory() {
                     Text(
                       'Feb 13, 2024',
                       style: TextStyle(
-                        color: Color(0xFF6C6E6F),
+                        color: ColorsPSA.textTertiary,
                         fontSize: 13,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w700,
@@ -98,7 +81,7 @@ Container salesHistory() {
                   Text(
                     '\$44.00',
                     style: TextStyle(
-                      color: Color(0xFF48494A),
+                      color: ColorsPSA.textSecondary,
                       fontSize: 13,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.w800,
@@ -129,29 +112,11 @@ Container salesHistory() {
               Container(
                 width: 56,
                 height: 56,
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFFAFAFA),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/sales_image2.png"),
+                    fit: BoxFit.fill,
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/sales_image2.png"),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
               const SizedBox(width: 16),
@@ -164,7 +129,7 @@ Container salesHistory() {
                     Text(
                       'Buy it Now',
                       style: TextStyle(
-                        color: Color(0xFF48494A),
+                        color: ColorsPSA.textSecondary,
                         fontSize: 15,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w800,
@@ -176,7 +141,7 @@ Container salesHistory() {
                     Text(
                       'Feb 13, 2024',
                       style: TextStyle(
-                        color: Color(0xFF6C6E6F),
+                        color: ColorsPSA.textTertiary,
                         fontSize: 13,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w700,
@@ -196,7 +161,7 @@ Container salesHistory() {
                   Text(
                     '\$44.00',
                     style: TextStyle(
-                      color: Color(0xFF48494A),
+                      color: ColorsPSA.textSecondary,
                       fontSize: 13,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.w800,
@@ -227,29 +192,11 @@ Container salesHistory() {
               Container(
                 width: 56,
                 height: 56,
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFFAFAFA),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/sales_image3.png"),
+                    fit: BoxFit.fill,
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/sales_image3.png"),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
               const SizedBox(width: 16),
@@ -262,7 +209,7 @@ Container salesHistory() {
                     Text(
                       'Auction',
                       style: TextStyle(
-                        color: Color(0xFF48494A),
+                        color: ColorsPSA.textSecondary,
                         fontSize: 15,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w800,
@@ -274,7 +221,7 @@ Container salesHistory() {
                     Text(
                       'Feb 13, 2024',
                       style: TextStyle(
-                        color: Color(0xFF6C6E6F),
+                        color: ColorsPSA.textTertiary,
                         fontSize: 13,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w700,
@@ -294,7 +241,7 @@ Container salesHistory() {
                   Text(
                     '\$44.00',
                     style: TextStyle(
-                      color: Color(0xFF48494A),
+                      color: ColorsPSA.textSecondary,
                       fontSize: 13,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.w800,
@@ -325,29 +272,11 @@ Container salesHistory() {
               Container(
                 width: 56,
                 height: 56,
-                clipBehavior: Clip.antiAlias,
-                decoration: ShapeDecoration(
-                  color: Color(0xFFFAFAFA),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage("assets/images/sales_image4.png"),
+                    fit: BoxFit.fill,
                   ),
-                ),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 56,
-                      height: 56,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/images/sales_image4.png"),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                  ],
                 ),
               ),
               const SizedBox(width: 16),
@@ -360,7 +289,7 @@ Container salesHistory() {
                     Text(
                       'Buy it Now',
                       style: TextStyle(
-                        color: Color(0xFF48494A),
+                        color: ColorsPSA.textSecondary,
                         fontSize: 15,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w800,
@@ -372,7 +301,7 @@ Container salesHistory() {
                     Text(
                       'Feb 13, 2024',
                       style: TextStyle(
-                        color: Color(0xFF6C6E6F),
+                        color: ColorsPSA.textTertiary,
                         fontSize: 13,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w700,
@@ -392,7 +321,7 @@ Container salesHistory() {
                   Text(
                     '\$44.00',
                     style: TextStyle(
-                      color: Color(0xFF48494A),
+                      color: ColorsPSA.textSecondary,
                       fontSize: 13,
                       fontFamily: 'Area Normal',
                       fontWeight: FontWeight.w800,
@@ -430,7 +359,7 @@ Container salesHistory() {
                     Text(
                       'Show 45 more sales',
                       style: TextStyle(
-                        color: Color(0xFF48494A),
+                        color: ColorsPSA.textSecondary,
                         fontSize: 15,
                         fontFamily: 'Area Normal',
                         fontWeight: FontWeight.w800,

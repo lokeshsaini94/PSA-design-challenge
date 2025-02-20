@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 
 Container priceEstimateTitle() {
   return Container(
@@ -10,20 +11,20 @@ Container priceEstimateTitle() {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Expanded(child: Container(height: 2, color: Color(0xFFF5F5F5))),
+        Expanded(child: Container(height: 2, color: ColorsPSA.borderTertiary)),
         SizedBox(width: 16),
         Text(
           'PRICE ESTIMATE',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Color(0xFF6C6E6F),
+            color: ColorsPSA.textTertiary,
             fontSize: 12,
             fontFamily: 'Area Normal',
             fontWeight: FontWeight.bold,
           ),
         ),
         SizedBox(width: 16),
-        Expanded(child: Container(height: 2, color: Color(0xFFF5F5F5))),
+        Expanded(child: Container(height: 2, color: ColorsPSA.borderTertiary)),
       ],
     ),
   );

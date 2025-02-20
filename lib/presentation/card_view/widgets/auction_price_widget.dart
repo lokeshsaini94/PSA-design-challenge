@@ -1,134 +1,156 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 
-Container auctionPrice() {
-  return Container(
-    padding: const EdgeInsets.symmetric(horizontal: 16),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          padding: const EdgeInsets.only(top: 16, bottom: 8),
-          decoration: BoxDecoration(color: Colors.white),
-          alignment: Alignment.centerLeft,
-          child: Text(
-            'Auction Price Trend',
-            style: TextStyle(
-              color: Color(0xFF48494A),
-              fontSize: 17,
-              fontFamily: 'Area Normal',
-              fontWeight: FontWeight.w800,
+class AuctionPriceWidget extends StatefulWidget {
+  const AuctionPriceWidget({super.key});
+
+  @override
+  State<AuctionPriceWidget> createState() => _AuctionPriceWidgetState();
+}
+
+class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            padding: const EdgeInsets.only(top: 16, bottom: 8),
+            decoration: BoxDecoration(color: Colors.white),
+            alignment: Alignment.centerLeft,
+            child: Text(
+              'Auction Price Trend',
+              style: TextStyle(
+                color: ColorsPSA.textSecondary,
+                fontSize: 17,
+                fontFamily: 'Area Normal',
+                fontWeight: FontWeight.w800,
+              ),
             ),
           ),
-        ),
 
-        AspectRatio(
-          aspectRatio: 1.5,
-          child: LineChart(
-            mainData(),
-            duration: Duration(milliseconds: 150),
-            curve: Curves.linear,
+          AspectRatio(
+            aspectRatio: 1.5,
+            child: LineChart(
+              mainData(),
+              duration: Duration(milliseconds: 150),
+              curve: Curves.linear,
+            ),
           ),
-        ),
 
-        SizedBox(
-          width: double.infinity,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text(
-                '2W',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF212121),
-                  fontSize: 13,
-                  fontFamily: 'Area Normal',
-                  fontWeight: FontWeight.w800,
-                  height: 1.54,
-                  letterSpacing: 0.13,
-                ),
-              ),
-              Text(
-                '1M',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF212121),
-                  fontSize: 13,
-                  fontFamily: 'Area Normal',
-                  fontWeight: FontWeight.w800,
-                  height: 1.54,
-                  letterSpacing: 0.13,
-                ),
-              ),
-              Text(
-                '3M',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF212121),
-                  fontSize: 13,
-                  fontFamily: 'Area Normal',
-                  fontWeight: FontWeight.w800,
-                  height: 1.54,
-                  letterSpacing: 0.13,
-                ),
-              ),
-              Container(
-                padding: const EdgeInsets.only(
-                  top: 12,
-                  left: 10.60,
-                  right: 10.40,
-                  bottom: 12,
-                ),
-                decoration: ShapeDecoration(
-                  color: Color(0xFFF5F5F5),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(32),
+          Container(
+            width: double.infinity,
+            padding: const EdgeInsets.only(top: 16),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    '2W',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorsPSA.textPrimary,
+                      fontSize: 13,
+                      fontFamily: 'Area Normal',
+                      fontWeight: FontWeight.w800,
+                      height: 1.54,
+                      letterSpacing: 0.13,
+                    ),
                   ),
                 ),
-                child: Text(
-                  '6M',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF212121),
-                    fontSize: 13,
-                    fontFamily: 'Area Normal',
-                    fontWeight: FontWeight.w800,
-                    height: 1.54,
-                    letterSpacing: 0.13,
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    '1M',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorsPSA.textPrimary,
+                      fontSize: 13,
+                      fontFamily: 'Area Normal',
+                      fontWeight: FontWeight.w800,
+                      height: 1.54,
+                      letterSpacing: 0.13,
+                    ),
                   ),
                 ),
-              ),
-              Text(
-                '1Y',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF212121),
-                  fontSize: 13,
-                  fontFamily: 'Area Normal',
-                  fontWeight: FontWeight.w800,
-                  height: 1.54,
-                  letterSpacing: 0.13,
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    '3M',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorsPSA.textPrimary,
+                      fontSize: 13,
+                      fontFamily: 'Area Normal',
+                      fontWeight: FontWeight.w800,
+                      height: 1.54,
+                      letterSpacing: 0.13,
+                    ),
+                  ),
                 ),
-              ),
-              Text(
-                'ALL',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xFF212121),
-                  fontSize: 13,
-                  fontFamily: 'Area Normal',
-                  fontWeight: FontWeight.w800,
-                  height: 1.54,
-                  letterSpacing: 0.13,
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  decoration: ShapeDecoration(
+                    color: ColorsPSA.surfaceTertiary,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                  ),
+                  child: Text(
+                    '6M',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorsPSA.textPrimary,
+                      fontSize: 13,
+                      fontFamily: 'Area Normal',
+                      fontWeight: FontWeight.w800,
+                      height: 1.54,
+                      letterSpacing: 0.13,
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    '1Y',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorsPSA.textPrimary,
+                      fontSize: 13,
+                      fontFamily: 'Area Normal',
+                      fontWeight: FontWeight.w800,
+                      height: 1.54,
+                      letterSpacing: 0.13,
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: const EdgeInsets.all(12),
+                  child: Text(
+                    'ALL',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: ColorsPSA.textPrimary,
+                      fontSize: 13,
+                      fontFamily: 'Area Normal',
+                      fontWeight: FontWeight.w800,
+                      height: 1.54,
+                      letterSpacing: 0.13,
+                    ),
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
-    ),
-  );
+        ],
+      ),
+    );
+  }
 }
 
 LineChartData mainData() {
@@ -139,7 +161,7 @@ LineChartData mainData() {
       horizontalInterval: 1,
       verticalInterval: 1,
       getDrawingHorizontalLine: (value) {
-        return const FlLine(color: Color(0xFFF5F5F5), strokeWidth: 1);
+        return const FlLine(color: ColorsPSA.borderTertiary, strokeWidth: 1);
       },
       getDrawingVerticalLine: (value) {
         return const FlLine(color: Colors.transparent, strokeWidth: 1);
@@ -200,7 +222,7 @@ Widget bottomTitleWidgets(double value, TitleMeta meta) {
   const style = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 14,
-    color: Color(0xFFBABABA),
+    color: ColorsPSA.textDisabled,
   );
   Widget text;
   switch (value.toInt()) {
@@ -231,7 +253,7 @@ Widget leftTitleWidgets(double value, TitleMeta meta) {
   const style = TextStyle(
     fontWeight: FontWeight.bold,
     fontSize: 14,
-    color: Color(0xFFBABABA),
+    color: ColorsPSA.textDisabled,
   );
   String text;
   switch (value.toInt()) {
