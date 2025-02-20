@@ -10,6 +10,26 @@ class AuctionPriceWidget extends StatefulWidget {
 }
 
 class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
+  bool is6M = true;
+  List<FlSpot> spots1 = [
+    FlSpot(0, 2),
+    FlSpot(2, 3),
+    FlSpot(4, 1),
+    FlSpot(4.8, 2.5),
+    FlSpot(7, 3),
+    FlSpot(9, 1.5),
+    FlSpot(10, 2.5),
+  ];
+  List<FlSpot> spots2 = [
+    FlSpot(0, 3),
+    FlSpot(2, 1),
+    FlSpot(4, 2.5),
+    FlSpot(4.8, 1.5),
+    FlSpot(7, 3),
+    FlSpot(9, 1),
+    FlSpot(10, 2),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -35,7 +55,7 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
           AspectRatio(
             aspectRatio: 1.5,
             child: LineChart(
-              mainData(),
+              mainData(is6M, spots1, spots2),
               duration: Duration(milliseconds: 150),
               curve: Curves.linear,
             ),
@@ -78,42 +98,69 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
                     ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  child: Text(
-                    '3M',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: ColorsPSA.textPrimary,
-                      fontSize: 13,
-                      fontFamily: 'Area Normal',
-                      fontWeight: FontWeight.w800,
-                      height: 1.54,
-                      letterSpacing: 0.13,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      is6M = false;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration:
+                        is6M
+                            ? ShapeDecoration(shape: RoundedRectangleBorder())
+                            : ShapeDecoration(
+                              color: ColorsPSA.surfaceTertiary,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(32),
+                              ),
+                            ),
+                    child: Text(
+                      '3M',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: ColorsPSA.textPrimary,
+                        fontSize: 13,
+                        fontFamily: 'Area Normal',
+                        fontWeight: FontWeight.w800,
+                        height: 1.54,
+                        letterSpacing: 0.13,
+                      ),
                     ),
                   ),
                 ),
-                Container(
-                  padding: const EdgeInsets.all(12),
-                  decoration: ShapeDecoration(
-                    color: ColorsPSA.surfaceTertiary,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                  ),
-                  child: Text(
-                    '6M',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: ColorsPSA.textPrimary,
-                      fontSize: 13,
-                      fontFamily: 'Area Normal',
-                      fontWeight: FontWeight.w800,
-                      height: 1.54,
-                      letterSpacing: 0.13,
+                GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      is6M = true;
+                    });
+                  },
+                  child: Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration:
+                        !is6M
+                            ? ShapeDecoration(shape: RoundedRectangleBorder())
+                            : ShapeDecoration(
+                              color: ColorsPSA.surfaceTertiary,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(32),
+                              ),
+                            ),
+                    child: Text(
+                      '6M',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: ColorsPSA.textPrimary,
+                        fontSize: 13,
+                        fontFamily: 'Area Normal',
+                        fontWeight: FontWeight.w800,
+                        height: 1.54,
+                        letterSpacing: 0.13,
+                      ),
                     ),
                   ),
                 ),
+
                 Container(
                   padding: const EdgeInsets.all(12),
                   child: Text(
@@ -153,7 +200,7 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
   }
 }
 
-LineChartData mainData() {
+LineChartData mainData(bool isSpot1, List<FlSpot> spots1, List<FlSpot> spots2) {
   return LineChartData(
     gridData: FlGridData(
       show: true,
@@ -198,15 +245,7 @@ LineChartData mainData() {
     maxY: 4,
     lineBarsData: [
       LineChartBarData(
-        spots: const [
-          FlSpot(0, 1.5),
-          FlSpot(2.6, 0.5),
-          FlSpot(4.9, 3),
-          FlSpot(6.8, 2),
-          FlSpot(8, 2.5),
-          FlSpot(9, 1.5),
-          FlSpot(10, 3.5),
-        ],
+        spots: isSpot1 ? spots1 : spots2,
         isCurved: true,
         color: Colors.black,
         barWidth: 5,

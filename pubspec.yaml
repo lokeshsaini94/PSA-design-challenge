@@ -17,9 +17,11 @@ dependencies:
   cupertino_icons: ^1.0.8
   flutter_svg: ^2.0.17
   fl_chart: ^0.70.2
-  shimmer_animation: ^2.1.0
-  use_scramble: ^0.0.6
+  shimmer_animation: ^2.2.2
   countup: ^0.1.4
+  lottie: ^3.3.1
+  rounded_loading_button_plus: ^3.0.1
+  flutter_slidable: ^4.0.0
 
 
 dev_dependencies:
@@ -34,6 +36,7 @@ flutter:
     - assets/images/
     - assets/fonts/
     - assets/icons/
+    - assets/animations/
   fonts:
     - family: Area Normal
       fonts:

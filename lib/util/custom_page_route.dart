@@ -23,3 +23,54 @@ class CustomAnimatedRoute extends PageRouteBuilder {
         },
       );
 }
+
+class SlideTransitionFromTop extends PageRouteBuilder {
+  final Widget page;
+
+  SlideTransitionFromTop({required this.page})
+    : super(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder:
+            (context, animation, secondaryAnimation, child) => SlideTransition(
+              position: Tween<Offset>(
+                begin: Offset(0.0, -1.0),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            ),
+      );
+}
+
+class SlideTransitionFromRight extends PageRouteBuilder {
+  final Widget page;
+
+  SlideTransitionFromRight({required this.page})
+    : super(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder:
+            (context, animation, secondaryAnimation, child) => SlideTransition(
+              position: Tween<Offset>(
+                begin: Offset(1.0, 0.0),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            ),
+      );
+}
+
+class SlideTransitionFromBottom extends PageRouteBuilder {
+  final Widget page;
+
+  SlideTransitionFromBottom({required this.page})
+    : super(
+        pageBuilder: (context, animation, secondaryAnimation) => page,
+        transitionsBuilder:
+            (context, animation, secondaryAnimation, child) => SlideTransition(
+              position: Tween<Offset>(
+                begin: Offset(0.0, 1.0),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            ),
+      );
+}

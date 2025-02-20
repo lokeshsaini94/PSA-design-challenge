@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
-import 'package:psa_task/presentation/card_view/card_view.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class SearchScreen extends StatelessWidget {
@@ -51,10 +50,16 @@ class SearchScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: ColorsPSA.primary,
         foregroundColor: Colors.white,
         title: Row(
           children: [
+            Hero(
+              tag: 'searchTag',
+              child: Icon(Icons.search, color: Colors.white, size: 32),
+            ),
+            SizedBox(width: 16),
             Expanded(
               child: TextField(
                 decoration: InputDecoration(
@@ -66,7 +71,20 @@ class SearchScreen extends StatelessWidget {
                 cursorColor: Colors.white,
               ),
             ),
-            Icon(Icons.search, color: Colors.white, size: 32),
+            SizedBox(width: 16),
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text(
+                'Done',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ],
         ),
       ),
