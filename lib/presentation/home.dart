@@ -1,7 +1,6 @@
 import 'package:countup/countup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:psa_task/core/constant/util.dart';
@@ -14,7 +13,6 @@ import 'package:psa_task/util/custom_page_route.dart';
 import 'package:psa_task/util/scroll_to_hide_widget.dart';
 import 'package:psa_task/util/show_up_widget.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
-import 'dart:io' show Platform;
 
 class Home extends StatefulWidget {
   const Home({super.key});
