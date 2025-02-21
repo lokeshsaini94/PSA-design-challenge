@@ -35,6 +35,7 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
             ),
           ),
 
+          // Line Chart
           AspectRatio(
             aspectRatio: 1.5,
             child: LineChart(
@@ -44,6 +45,7 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
             ),
           ),
 
+          // Time Filter lables
           Container(
             width: double.infinity,
             padding: const EdgeInsets.only(top: 16),
@@ -51,6 +53,7 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                // 2W label
                 Container(
                   padding: const EdgeInsets.all(12),
                   child: Text(
@@ -66,6 +69,8 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
                     ),
                   ),
                 ),
+
+                // 1M label
                 Container(
                   padding: const EdgeInsets.all(12),
                   child: Text(
@@ -81,6 +86,8 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
                     ),
                   ),
                 ),
+
+                // 3M label
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -112,6 +119,8 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
                     ),
                   ),
                 ),
+
+                // 6M label
                 GestureDetector(
                   onTap: () {
                     setState(() {
@@ -144,6 +153,7 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
                   ),
                 ),
 
+                // 1Y label
                 Container(
                   padding: const EdgeInsets.all(12),
                   child: Text(
@@ -159,6 +169,8 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
                     ),
                   ),
                 ),
+
+                // ALL label
                 Container(
                   padding: const EdgeInsets.all(12),
                   child: Text(
@@ -183,6 +195,22 @@ class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
   }
 }
 
+/// Generates the main data for a line chart.
+///
+/// This function creates and returns a [LineChartData] object, which is used
+/// to configure the appearance and behavior of a line chart. The chart can
+/// display two different sets of data points, determined by the [isSpot1]
+/// parameter.
+///
+/// - [isSpot1]: A boolean value that determines which set of data points to
+///   display. If true, [spots1] will be used; otherwise, [spots2] will be used.
+/// - [spots1]: A list of [FlSpot] objects representing the first set of data
+///   points to be displayed on the chart.
+/// - [spots2]: A list of [FlSpot] objects representing the second set of data
+///   points to be displayed on the chart.
+///
+/// Returns a [LineChartData] object configured with the specified data points
+/// and chart settings.
 LineChartData mainData(bool isSpot1, List<FlSpot> spots1, List<FlSpot> spots2) {
   return LineChartData(
     gridData: FlGridData(
@@ -240,6 +268,31 @@ LineChartData mainData(bool isSpot1, List<FlSpot> spots1, List<FlSpot> spots2) {
   );
 }
 
+/// A widget that returns a styled text widget based on the given value.
+///
+/// The text widget is used as a title for a chart axis, with specific titles
+/// for certain values:
+/// - 1: "MAY"
+/// - 3: "JUN"
+/// - 5: "JUL"
+/// - 7: "AUG"
+/// - 9: "SEP"
+///
+/// If the value does not match any of the specified cases, an empty text widget
+/// is returned.
+///
+/// The text style is defined with bold font weight, font size of 14, and a
+/// color from `ColorsPSA.textDisabled`.
+///
+/// The returned widget is wrapped in a `SideTitleWidget` with the provided
+/// `meta` parameter.
+///
+/// Parameters:
+/// - `value` (double): The value used to determine the text to display.
+/// - `meta` (TitleMeta): Metadata for the title widget.
+///
+/// Returns:
+/// - `Widget`: A `SideTitleWidget` containing the styled text widget.
 Widget bottomTitleWidgets(double value, TitleMeta meta) {
   const style = TextStyle(
     fontWeight: FontWeight.bold,
@@ -271,6 +324,24 @@ Widget bottomTitleWidgets(double value, TitleMeta meta) {
   return SideTitleWidget(meta: meta, child: text);
 }
 
+/// A widget that returns a text widget with a specific style based on the given value.
+///
+/// The text displayed corresponds to the following values:
+/// - 0: '0'
+/// - 1: '\$50'
+/// - 2: '\$100'
+/// - 3: '\$150'
+///
+/// If the value does not match any of the above cases, an empty container is returned.
+///
+/// The text style is defined with bold font weight, font size of 14, and a disabled text color.
+///
+/// Parameters:
+/// - `value` (double): The value used to determine the text to be displayed.
+/// - `meta` (TitleMeta): Metadata for the title (not used in this function).
+///
+/// Returns:
+/// - A `Text` widget with the corresponding text and style, or an empty `Container` if the value does not match any case.
 Widget leftTitleWidgets(double value, TitleMeta meta) {
   const style = TextStyle(
     fontWeight: FontWeight.bold,

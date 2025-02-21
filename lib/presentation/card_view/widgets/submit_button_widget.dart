@@ -28,7 +28,7 @@ class _SubmitButtonWidgetState extends State<SubmitButtonWidget> {
         successColor: ColorsPSA.surfaceInvert,
         controller: _btnController,
         onPressed: () async {
-          //await Future.delayed(Duration(milliseconds: 200));
+          await Future.delayed(Duration(milliseconds: 200));
           _btnController.success();
           widget.onPressed();
           await Future.delayed(Duration(milliseconds: 2000));

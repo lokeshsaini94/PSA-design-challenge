@@ -89,6 +89,7 @@ class _HomeState extends State<Home> {
                     ),
                   ),
                 ],
+                // App bar tabs
                 bottom: PreferredSize(
                   preferredSize: Size.fromHeight(64.0),
                   child: Padding(
@@ -140,6 +141,7 @@ class _HomeState extends State<Home> {
             children: [
               Column(
                 children: [
+                  // Add to collection button
                   ShowUp(
                     delay: delayAmount,
                     child: Container(
@@ -169,12 +171,14 @@ class _HomeState extends State<Home> {
                       ),
                     ),
                   ),
+                  // Cards list
                   Flexible(
                     child: ListView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: 16,
+                      itemCount: 8,
                       padding: EdgeInsets.zero,
                       itemBuilder: (context, index) {
+                        // Swipable card items with actions
                         return Slidable(
                           startActionPane: ActionPane(
                             motion: const ScrollMotion(),
@@ -210,6 +214,7 @@ class _HomeState extends State<Home> {
                               ),
                             ],
                           ),
+                          // Card item
                           child: GestureDetector(
                             onTap: () {
                               cardsAction(index, context);
@@ -312,11 +317,10 @@ class _HomeState extends State<Home> {
           ),
         ),
         bottomNavigationBar: SafeArea(
-          bottom: Platform.isIOS ? false : true,
           child: ScrollToHideWidget(
             controller: controller,
             child: Container(
-              height: Platform.isIOS ? 96 : 72,
+              height: 72,
               padding: EdgeInsets.only(top: 8, bottom: 8),
               decoration: BoxDecoration(
                 color: ColorsPSA.surfacePrimary,
@@ -330,7 +334,7 @@ class _HomeState extends State<Home> {
                 ],
               ),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Column(
@@ -393,6 +397,7 @@ class _HomeState extends State<Home> {
     );
   }
 
+  // Cards swipe action to open card view or show Toast
   void cardsAction(int index, BuildContext context) {
     if (index == 0) {
       Navigator.of(context).push(_createRoute());
@@ -413,22 +418,26 @@ class _HomeState extends State<Home> {
       );
     }
   }
-}
 
-Route _createRoute() {
-  return PageRouteBuilder(
-    opaque: false,
-    transitionDuration: const Duration(milliseconds: 800),
-    reverseTransitionDuration: const Duration(milliseconds: 500),
-    pageBuilder: (context, animation, secondaryAnimation) => const CardView(),
-    transitionsBuilder: (context, animation, secondaryAnimation, child) {
-      const begin = Offset(0.0, 1.0);
-      const end = Offset.zero;
-      const curve = Curves.ease;
+  // Custom page route for card view
+  Route _createRoute() {
+    return PageRouteBuilder(
+      opaque: false,
+      transitionDuration: const Duration(milliseconds: 800),
+      reverseTransitionDuration: const Duration(milliseconds: 500),
+      pageBuilder: (context, animation, secondaryAnimation) => const CardView(),
+      transitionsBuilder: (context, animation, secondaryAnimation, child) {
+        const begin = Offset(0.0, 1.0);
+        const end = Offset.zero;
+        const curve = Curves.ease;
 
-      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+        var tween = Tween(
+          begin: begin,
+          end: end,
+        ).chain(CurveTween(curve: curve));
 
-      return SlideTransition(position: animation.drive(tween), child: child);
-    },
-  );
+        return SlideTransition(position: animation.drive(tween), child: child);
+      },
+    );
+  }
 }

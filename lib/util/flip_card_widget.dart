@@ -1,3 +1,30 @@
+/// A widget that provides a flip card animation between a front and back container.
+///
+/// The [FlipCardWidget] is a stateful widget that allows users to flip between
+/// two containers (front and back) with a horizontal drag gesture. The flip
+/// animation is handled using an [AnimationController] and a [Tween].
+///
+/// The widget takes two required parameters:
+/// - [front]: The container to display on the front side of the card.
+/// - [back]: The container to display on the back side of the card.
+///
+/// Example usage:
+/// ```dart
+/// FlipCardWidget(
+///   front: Container(
+///     color: Colors.blue,
+///     child: Center(child: Text('Front')),
+///   ),
+///   back: Container(
+///     color: Colors.red,
+///     child: Center(child: Text('Back')),
+///   ),
+/// )
+/// ```
+///
+/// The flip animation can be triggered by dragging horizontally on the widget.
+/// The card will flip to the opposite side when the drag velocity exceeds a
+/// certain threshold.
 import 'dart:math';
 
 import 'package:flutter/material.dart';

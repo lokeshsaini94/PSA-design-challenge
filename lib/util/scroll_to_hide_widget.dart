@@ -55,7 +55,7 @@ class _ScrollToHideWidgetState extends State<ScrollToHideWidget> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: widget.duration,
-      height: isVisible ? (Platform.isIOS ? 96 : 72) : 0,
+      height: isVisible ? 72 : 0,
       padding: isVisible ? EdgeInsets.zero : EdgeInsets.only(top: 40),
       child: Wrap(children: [widget.child]),
     );

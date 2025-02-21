@@ -78,24 +78,24 @@ class _CardViewState extends State<CardView> {
                         children: [
                           Column(
                             children: [
-                              topAactionButtons(context),
+                              TopActionButtonsWidget(),
                               SizedBox(height: 16),
                               CardImageWidget(),
                               SizedBox(height: 8),
-                              cardTitle(),
-                              priceEstimateTitle(),
-                              priceEstimate(),
+                              CardTitleWidget(),
+                              PriceEstimateTitleWidget(),
+                              PriceEstimateWidget(),
                               SizedBox(height: 16),
                               divider(),
                               SizedBox(height: 16),
-                              salesHistory(),
+                              SalesHistoryWidget(),
                               SizedBox(height: 16),
                               divider(),
                               SizedBox(height: 16),
                               AuctionPriceWidget(),
                               SizedBox(height: 16),
                               divider(),
-                              collectors(),
+                              CollectorsWidget(),
                               SizedBox(height: 16),
                             ],
                           ),
@@ -106,6 +106,7 @@ class _CardViewState extends State<CardView> {
                 ),
               ),
             ),
+            // Submit Button
             Align(
               alignment: Alignment.bottomCenter,
               child: ScrollToHideWidget(
@@ -119,6 +120,7 @@ class _CardViewState extends State<CardView> {
                 ),
               ),
             ),
+            // Pikachu Animation
             AnimatedPositioned(
               duration: Duration(seconds: 2),
               curve: Curves.easeInOut,
@@ -133,6 +135,7 @@ class _CardViewState extends State<CardView> {
                       )
                       : SizedBox.shrink(),
             ),
+            // Confetti Animation
             isAnimate
                 ? Align(
                   alignment: Alignment.center,

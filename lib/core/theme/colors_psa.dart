@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class ColorsPSA {
-  //Reds
   static const Color textPrimary = Color(0xFF212121);
   static const Color textSecondary = Color(0xFF48494A);
   static const Color textTertiary = Color(0xFF6C6E6F);

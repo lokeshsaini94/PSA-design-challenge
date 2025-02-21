@@ -1,6 +1,23 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 
+/// A widget that animates its child to "show up" with a slide transition.
+///
+/// The [ShowUp] widget takes a [child] widget and an optional [delay] in milliseconds.
+/// The child widget will slide up from below after the specified delay.
+///
+/// Example usage:
+/// ```dart
+/// ShowUp(
+///   child: Text('Hello, World!'),
+///   delay: 500, // Delay in milliseconds
+/// );
+/// ```
+///
+/// The [delay] parameter defaults to 0 if not provided.
+///
+/// The animation duration is fixed at 500 milliseconds with a decelerate curve.
+
 class ShowUp extends StatefulWidget {
   final Widget child;
   final int delay;

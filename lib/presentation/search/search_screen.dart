@@ -1,20 +1,14 @@
 import 'package:countup/countup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:psa_task/core/constant/util.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
 import 'package:psa_task/presentation/card_view/card_view.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
-import '../../util/custom_page_route.dart';
-import '../../util/show_up_widget.dart';
-import '../grading_confirmation/confirmation_page.dart';
-
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    int delayAmount = 100;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -55,96 +49,95 @@ class SearchScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Flexible(
-        child: ListView.builder(
-          itemCount: 16,
-          padding: EdgeInsets.zero,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {
-                cardsAction(index, context);
-              },
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Row(
-                  children: [
-                    Shimmer(
-                      duration: Duration(seconds: 3),
-                      interval: Duration(seconds: 0),
-                      child: Image.asset(
-                        pokemonCardsImages[index],
-                        width: 64,
-                        height: 88,
-                        fit: BoxFit.fitHeight,
-                      ),
+      body: ListView.builder(
+        itemCount: 16,
+        padding: EdgeInsets.zero,
+        itemBuilder: (context, index) {
+          return GestureDetector(
+            onTap: () {
+              cardsAction(index, context);
+            },
+            child: Padding(
+              padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+              child: Row(
+                children: [
+                  Shimmer(
+                    duration: Duration(seconds: 3),
+                    interval: Duration(seconds: 0),
+                    child: Image.asset(
+                      pokemonCardsImages[index],
+                      width: 64,
+                      height: 88,
+                      fit: BoxFit.fitHeight,
                     ),
-                    SizedBox(width: 16),
-                    Expanded(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'UNGRADED',
-                            style: TextStyle(
-                              color: ColorsPSA.textTertiary,
-                              fontWeight: FontWeight.w800,
-                              fontSize: 12,
-                            ),
+                  ),
+                  SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'UNGRADED',
+                          style: TextStyle(
+                            color: ColorsPSA.textTertiary,
+                            fontWeight: FontWeight.w800,
+                            fontSize: 12,
                           ),
-                          SizedBox(height: 4),
-                          Text(
-                            pokemonCards[index],
-                            style: TextStyle(
-                              color: ColorsPSA.textPrimary,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                            ),
+                        ),
+                        SizedBox(height: 4),
+                        Text(
+                          pokemonCards[index],
+                          style: TextStyle(
+                            color: ColorsPSA.textPrimary,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
                           ),
-                          SizedBox(height: 4),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(
-                                pokemonCardsValue[index],
-                                style: TextStyle(
-                                  color: ColorsPSA.textPrimary,
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 16,
-                                ),
+                        ),
+                        SizedBox(height: 4),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              pokemonCardsValue[index],
+                              style: TextStyle(
+                                color: ColorsPSA.textPrimary,
+                                fontWeight: FontWeight.w800,
+                                fontSize: 16,
                               ),
-                              SizedBox(width: 6),
-                              Icon(
-                                pokemonCardsValueChangeIcons[index],
+                            ),
+                            SizedBox(width: 6),
+                            Icon(
+                              pokemonCardsValueChangeIcons[index],
+                              color: pokemonCardsValueChangeColors[index],
+                              size: 16,
+                            ),
+                            Countup(
+                              begin: 0,
+                              end: pokemonCardsValueChange[index],
+                              duration: Duration(seconds: 1),
+                              separator: '.',
+                              suffix: "%",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                                 color: pokemonCardsValueChangeColors[index],
-                                size: 16,
                               ),
-                              Countup(
-                                begin: 0,
-                                end: pokemonCardsValueChange[index],
-                                duration: Duration(seconds: 1),
-                                separator: '.',
-                                suffix: "%",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  color: pokemonCardsValueChangeColors[index],
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
-                      ),
+                            ),
+                          ],
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            );
-          },
-        ),
+            ),
+          );
+        },
       ),
     );
   }
 }
 
+// Cards swipe action to open card view or show Toast
 void cardsAction(int index, BuildContext context) {
   if (index == 0) {
     Navigator.of(context).push(_createRoute());
@@ -166,6 +159,7 @@ void cardsAction(int index, BuildContext context) {
   }
 }
 
+// Custom page route for card view
 Route _createRoute() {
   return PageRouteBuilder(
     opaque: false,

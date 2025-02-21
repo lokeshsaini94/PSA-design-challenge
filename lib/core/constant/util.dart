@@ -115,6 +115,7 @@ const List<Color> pokemonCardsValueChangeColors = [
   ColorsPSA.textError,
   ColorsPSA.textSuccess,
 ];
+
 List<FlSpot> spots1 = [
   FlSpot(0, 2),
   FlSpot(2, 3),
@@ -124,6 +125,7 @@ List<FlSpot> spots1 = [
   FlSpot(9, 1.5),
   FlSpot(10, 2.5),
 ];
+
 List<FlSpot> spots2 = [
   FlSpot(0, 3),
   FlSpot(2, 1),
