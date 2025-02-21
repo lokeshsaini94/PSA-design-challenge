@@ -7,7 +7,7 @@ class CustomAnimatedRoute extends PageRouteBuilder {
     : super(
         opaque: false,
         pageBuilder: (context, animation, secondaryAnimation) => enterWidget,
-        transitionDuration: Duration(milliseconds: 1500),
+        transitionDuration: Duration(milliseconds: 1200),
         reverseTransitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           animation = CurvedAnimation(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/theme/colors_psa.dart';
 import 'package:psa_task/presentation/home.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'PSA app',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.red),
+        colorScheme: ColorScheme.fromSeed(seedColor: ColorsPSA.primary),
         useMaterial3: true,
         fontFamily: 'Area Normal',
       ),

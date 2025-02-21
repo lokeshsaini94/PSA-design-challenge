@@ -5,49 +5,47 @@ class ShowUp extends StatefulWidget {
   final Widget child;
   final int delay;
 
-  ShowUp({required this.child, required this.delay});
+  ShowUp({required this.child, this.delay = 0});
 
   @override
   _ShowUpState createState() => _ShowUpState();
 }
 
 class _ShowUpState extends State<ShowUp> with TickerProviderStateMixin {
-  late AnimationController _animController;
-  late Animation<Offset> _animOffset;
+  late AnimationController _controller;
+  late Animation<Offset> _animation;
 
   @override
   void initState() {
     super.initState();
-
-    _animController = AnimationController(
+    _controller = AnimationController(
       vsync: this,
       duration: Duration(milliseconds: 500),
     );
     final curve = CurvedAnimation(
       curve: Curves.decelerate,
-      parent: _animController,
+      parent: _controller,
     );
-    _animOffset = Tween<Offset>(
-      begin: const Offset(0.0, 0.35),
+    _animation = Tween<Offset>(
+      begin: Offset(0, 0.5),
       end: Offset.zero,
     ).animate(curve);
 
-    Timer(Duration(milliseconds: widget.delay), () {
-      _animController.forward();
+    Future.delayed(Duration(milliseconds: widget.delay), () {
+      if (mounted) {
+        _controller.forward();
+      }
     });
   }
 
   @override
   void dispose() {
+    _controller.dispose();
     super.dispose();
-    _animController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return FadeTransition(
-      child: SlideTransition(position: _animOffset, child: widget.child),
-      opacity: _animController,
-    );
+    return SlideTransition(position: _animation, child: widget.child);
   }
 }

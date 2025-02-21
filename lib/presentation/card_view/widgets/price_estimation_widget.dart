@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/constant/util.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
 
 class PriceEstimateWidget extends StatefulWidget {
@@ -9,33 +10,6 @@ class PriceEstimateWidget extends StatefulWidget {
 }
 
 class _PriceEstimateWidgetState extends State<PriceEstimateWidget> {
-  List<String> grades = [
-    'UNGRADED',
-    'PSA 10',
-    'PSA 9',
-    'PSA 8',
-    'PSA 7',
-    'PSA 6',
-  ];
-
-  List<String> price = [
-    '\$3,565.90',
-    '\$319,999',
-    '\$17,500',
-    '\$7,592.69',
-    '\$6,500.00',
-    '\$5,650.00',
-  ];
-
-  List<String> subHead = [
-    'Current value',
-    'Pop 124',
-    'Pop 718',
-    'Pop 648',
-    'Pop 516',
-    'Pop 705',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(

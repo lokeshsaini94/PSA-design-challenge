@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/constant/util.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
 
 Column collectors() {
@@ -112,36 +113,3 @@ Column collectors() {
     ],
   );
 }
-
-List<String> imagePaths = [
-  'assets/images/profile1.png',
-  'assets/images/profile2.png',
-  'assets/images/profile3.png',
-  'assets/images/profile4.png',
-  'assets/images/profile5.png',
-  'assets/images/profile6.png',
-  'assets/images/profile7.png',
-  'assets/images/profile8.png',
-];
-
-List<String> names = [
-  'Steph',
-  'Kristina',
-  'Harry',
-  'Lionel',
-  'Annina',
-  'Tarra',
-  'Molly',
-  'Kathy',
-];
-
-List<String> status = [
-  'PSA 9',
-  'Raw',
-  'PSA 4',
-  'Raw',
-  'Raw',
-  'Raw',
-  'Raw',
-  'Raw',
-];

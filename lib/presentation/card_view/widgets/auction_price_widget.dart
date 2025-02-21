@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/constant/util.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
 
 class AuctionPriceWidget extends StatefulWidget {
@@ -11,24 +12,6 @@ class AuctionPriceWidget extends StatefulWidget {
 
 class _AuctionPriceWidgetState extends State<AuctionPriceWidget> {
   bool is6M = true;
-  List<FlSpot> spots1 = [
-    FlSpot(0, 2),
-    FlSpot(2, 3),
-    FlSpot(4, 1),
-    FlSpot(4.8, 2.5),
-    FlSpot(7, 3),
-    FlSpot(9, 1.5),
-    FlSpot(10, 2.5),
-  ];
-  List<FlSpot> spots2 = [
-    FlSpot(0, 3),
-    FlSpot(2, 1),
-    FlSpot(4, 2.5),
-    FlSpot(4.8, 1.5),
-    FlSpot(7, 3),
-    FlSpot(9, 1),
-    FlSpot(10, 2),
-  ];
 
   @override
   Widget build(BuildContext context) {

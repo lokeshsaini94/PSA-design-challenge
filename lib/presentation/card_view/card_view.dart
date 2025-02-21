@@ -11,6 +11,7 @@ import 'package:psa_task/presentation/card_view/widgets/price_estimate_widget.da
 import 'package:psa_task/presentation/card_view/widgets/sales_history_widget.dart';
 import 'package:psa_task/presentation/card_view/widgets/submit_button_widget.dart';
 import 'package:psa_task/presentation/card_view/widgets/top_action_buttons_widget.dart';
+import 'package:psa_task/util/scroll_to_hide_widget.dart';
 
 class CardView extends StatefulWidget {
   const CardView({super.key});
@@ -20,16 +21,30 @@ class CardView extends StatefulWidget {
 }
 
 class _CardViewState extends State<CardView> {
+  late ScrollController controller;
   bool isAnimate = false;
 
   @override
+  void initState() {
+    super.initState();
+    controller = ScrollController();
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.transparent,
-      body: SafeArea(
-        child: Stack(
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
           children: [
             SingleChildScrollView(
+              controller: controller,
               child: Container(
                 width: double.infinity,
                 padding: const EdgeInsets.only(top: 16),
@@ -58,41 +73,48 @@ class _CardViewState extends State<CardView> {
                     SizedBox(height: 8),
                     Padding(
                       padding: const EdgeInsets.symmetric(vertical: 16),
-                      child: Column(
+                      child: Stack(
                         children: [
-                          topAactionButtons(context),
-                          SizedBox(height: 16),
-                          CardImageWidget(),
-                          SizedBox(height: 8),
-                          cardTitle(),
-                          priceEstimateTitle(),
-                          priceEstimate(),
-                          SizedBox(height: 16),
-                          divider(),
-                          SizedBox(height: 16),
-                          salesHistory(),
-                          SizedBox(height: 16),
-                          divider(),
-                          SizedBox(height: 16),
-                          AuctionPriceWidget(),
-                          SizedBox(height: 16),
-                          divider(),
-                          collectors(),
-                          SizedBox(height: 16),
-                          divider(),
-                          SizedBox(height: 32),
-                          SubmitButtonWidget(
-                            onPressed: () {
-                              setState(() {
-                                isAnimate = true;
-                              });
-                            },
+                          Column(
+                            children: [
+                              topAactionButtons(context),
+                              SizedBox(height: 16),
+                              CardImageWidget(),
+                              SizedBox(height: 8),
+                              cardTitle(),
+                              priceEstimateTitle(),
+                              priceEstimate(),
+                              SizedBox(height: 16),
+                              divider(),
+                              SizedBox(height: 16),
+                              salesHistory(),
+                              SizedBox(height: 16),
+                              divider(),
+                              SizedBox(height: 16),
+                              AuctionPriceWidget(),
+                              SizedBox(height: 16),
+                              divider(),
+                              collectors(),
+                              SizedBox(height: 16),
+                            ],
                           ),
-                          SizedBox(height: 32),
                         ],
                       ),
                     ),
                   ],
+                ),
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: ScrollToHideWidget(
+                controller: controller,
+                child: SubmitButtonWidget(
+                  onPressed: () {
+                    setState(() {
+                      isAnimate = true;
+                    });
+                  },
                 ),
               ),
             ),

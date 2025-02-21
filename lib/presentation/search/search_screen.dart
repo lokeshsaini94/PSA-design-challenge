@@ -1,51 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:psa_task/core/constant/util.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
 
 class SearchScreen extends StatelessWidget {
-  static const List<String> pokemonCardsImages = [
-    'assets/images/card1.png',
-    'assets/images/card2.png',
-    'assets/images/card3.png',
-    'assets/images/card4.png',
-  ];
-
-  static const List<String> pokemonCards = [
-    "1999 Pokemon Game 1st Edition Charizard - Holo #4",
-    "1999 Pokemon Game 1st Edition  Mewtwo #10",
-    "1999 Pokemon Game 1st Edition  Mewtwo #10",
-    "1999 Pokemon Game 1st Edition  Blastoise #2",
-  ];
-
-  static List<String> pokemonCardsValue = [
-    "\$3,565.17",
-    "\$293.99",
-    "\$63.31",
-    "\$531.70",
-  ];
-
-  static const List<String> pokemonCardsValueChange = [
-    "26.5%",
-    "2.7%",
-    "1.2%",
-    "7.2%",
-  ];
-
-  static const List<IconData> pokemonCardsValueChangeIcons = [
-    Icons.arrow_upward,
-    Icons.arrow_downward,
-    Icons.arrow_downward,
-    Icons.arrow_upward,
-  ];
-
-  static const List<Color> pokemonCardsValueChangeColors = [
-    ColorsPSA.textSuccess,
-    ColorsPSA.textError,
-    ColorsPSA.textError,
-    ColorsPSA.textSuccess,
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -168,7 +127,7 @@ class SearchScreen extends StatelessWidget {
                                 size: 16,
                               ),
                               Text(
-                                pokemonCardsValueChange[index],
+                                pokemonCardsValueChangeStrings[index],
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: pokemonCardsValueChangeColors[index],
