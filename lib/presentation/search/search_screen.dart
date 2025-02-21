@@ -1,12 +1,20 @@
+import 'package:countup/countup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:psa_task/core/constant/util.dart';
 import 'package:psa_task/core/theme/colors_psa.dart';
+import 'package:psa_task/presentation/card_view/card_view.dart';
 import 'package:shimmer_animation/shimmer_animation.dart';
+
+import '../../util/custom_page_route.dart';
+import '../../util/show_up_widget.dart';
+import '../grading_confirmation/confirmation_page.dart';
 
 class SearchScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    int delayAmount = 100;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -47,33 +55,17 @@ class SearchScreen extends StatelessWidget {
           ],
         ),
       ),
-      body: Expanded(
+      body: Flexible(
         child: ListView.builder(
-          itemCount: 4,
+          itemCount: 16,
+          padding: EdgeInsets.zero,
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                if (index == 0) {
-                  //cardViewSheet(context, index);
-                } else {
-                  showCupertinoModalPopup(
-                    context: context,
-                    builder: (BuildContext context) {
-                      return CupertinoActionSheet(
-                        title: Text(pokemonCards[index]),
-                        cancelButton: CupertinoActionSheetAction(
-                          child: Text('Dismiss'),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        ),
-                      );
-                    },
-                  );
-                }
+                cardsAction(index, context);
               },
               child: Padding(
-                padding: EdgeInsets.all(16),
+                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
                 child: Row(
                   children: [
                     Shimmer(
@@ -126,8 +118,12 @@ class SearchScreen extends StatelessWidget {
                                 color: pokemonCardsValueChangeColors[index],
                                 size: 16,
                               ),
-                              Text(
-                                pokemonCardsValueChangeStrings[index],
+                              Countup(
+                                begin: 0,
+                                end: pokemonCardsValueChange[index],
+                                duration: Duration(seconds: 1),
+                                separator: '.',
+                                suffix: "%",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   color: pokemonCardsValueChangeColors[index],
@@ -147,4 +143,43 @@ class SearchScreen extends StatelessWidget {
       ),
     );
   }
+}
+
+void cardsAction(int index, BuildContext context) {
+  if (index == 0) {
+    Navigator.of(context).push(_createRoute());
+  } else {
+    showCupertinoModalPopup(
+      context: context,
+      builder: (BuildContext context) {
+        return CupertinoActionSheet(
+          title: Text(pokemonCards[index]),
+          cancelButton: CupertinoActionSheetAction(
+            child: Text('Dismiss'),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        );
+      },
+    );
+  }
+}
+
+Route _createRoute() {
+  return PageRouteBuilder(
+    opaque: false,
+    transitionDuration: const Duration(milliseconds: 800),
+    reverseTransitionDuration: const Duration(milliseconds: 500),
+    pageBuilder: (context, animation, secondaryAnimation) => const CardView(),
+    transitionsBuilder: (context, animation, secondaryAnimation, child) {
+      const begin = Offset(0.0, 1.0);
+      const end = Offset.zero;
+      const curve = Curves.ease;
+
+      var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
+
+      return SlideTransition(position: animation.drive(tween), child: child);
+    },
+  );
 }

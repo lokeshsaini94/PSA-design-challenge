@@ -7,12 +7,12 @@ class CustomAnimatedRoute extends PageRouteBuilder {
     : super(
         opaque: false,
         pageBuilder: (context, animation, secondaryAnimation) => enterWidget,
-        transitionDuration: Duration(milliseconds: 1200),
+        transitionDuration: Duration(milliseconds: 800),
         reverseTransitionDuration: Duration(milliseconds: 500),
         transitionsBuilder: (context, animation, secondaryAnimation, child) {
           animation = CurvedAnimation(
             parent: animation,
-            curve: Curves.fastLinearToSlowEaseIn,
+            curve: Curves.fastOutSlowIn,
             reverseCurve: Curves.fastOutSlowIn,
           );
           return ScaleTransition(

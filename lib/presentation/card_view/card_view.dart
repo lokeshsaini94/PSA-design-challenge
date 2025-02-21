@@ -39,6 +39,7 @@ class _CardViewState extends State<CardView> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(

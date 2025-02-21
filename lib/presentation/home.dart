@@ -45,350 +45,347 @@ class _HomeState extends State<Home> {
       length: 4,
       child: Scaffold(
         backgroundColor: ColorsPSA.surfacePrimary,
-        body: CustomScrollView(
+        body: NestedScrollView(
           controller: controller,
-          slivers: [
-            SliverAppBar(
-              backgroundColor: ColorsPSA.primary,
-              floating: true,
-              pinned: true,
-              expandedHeight: 110,
-              leading: Image.asset(
-                'assets/images/profile_icon.png',
-                width: 32,
-                height: 32,
-              ),
-              title: Text(
-                'COLLECTION',
-                style: TextStyle(
-                  fontFamily: 'Area Normal',
-                  fontWeight: FontWeight.w800,
-                  fontSize: 22, // Increased font size
-                  color: Colors.white,
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+            return <Widget>[
+              SliverAppBar(
+                backgroundColor: ColorsPSA.primary,
+                floating: true,
+                pinned: true,
+                expandedHeight: 110,
+                leading: Image.asset(
+                  'assets/images/profile_icon.png',
+                  width: 32,
+                  height: 32,
                 ),
-              ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 16),
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => SearchScreen()),
-                      );
-                    },
-                    child: Hero(
-                      tag: 'searchTag',
-                      child: Icon(Icons.search, color: Colors.white, size: 32),
+                title: Text(
+                  'COLLECTION',
+                  style: TextStyle(
+                    fontFamily: 'Area Normal',
+                    fontWeight: FontWeight.w800,
+                    fontSize: 22, // Increased font size
+                    color: Colors.white,
+                  ),
+                ),
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 16),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          SlideTransitionFromRight(page: SearchScreen()),
+                        );
+                      },
+                      child: Hero(
+                        tag: 'searchTag',
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.white,
+                          size: 32,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+                bottom: PreferredSize(
+                  preferredSize: Size.fromHeight(64.0),
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TabBar(
+                      labelColor: ColorsPSA.primary,
+                      indicatorColor: Colors.transparent,
+                      labelPadding: EdgeInsets.zero,
+                      dividerColor: Colors.transparent,
+                      unselectedLabelColor: Colors.white,
+                      indicatorSize: TabBarIndicatorSize.tab,
+                      indicator: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.white,
+                      ),
+                      tabs: [
+                        Tab(
+                          child: Text(
+                            'Inventory',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            'Vault',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            'Selling',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        Tab(
+                          child: Text(
+                            'Sold',
+                            style: TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ),
-              ],
-              bottom: PreferredSize(
-                preferredSize: Size.fromHeight(64.0),
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TabBar(
-                    labelColor: ColorsPSA.primary,
-                    indicatorColor: Colors.transparent,
-                    labelPadding: EdgeInsets.zero,
-                    dividerColor: Colors.transparent,
-                    unselectedLabelColor: Colors.white,
-                    indicatorSize: TabBarIndicatorSize.tab,
-                    indicator: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: Colors.white,
-                    ),
-                    tabs: [
-                      Tab(
-                        child: Text(
-                          'Inventory',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Tab(
-                        child: Text(
-                          'Vault',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Tab(
-                        child: Text(
-                          'Selling',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                      Tab(
-                        child: Text(
-                          'Sold',
-                          style: TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
               ),
-            ),
-            SliverFillRemaining(
-              child: TabBarView(
+            ];
+          },
+          body: TabBarView(
+            children: [
+              Column(
                 children: [
-                  Column(
-                    children: [
-                      ShowUp(
-                        delay: delayAmount,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 16.0,
-                            vertical: 16,
+                  ShowUp(
+                    delay: delayAmount,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 16,
+                      ),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: ColorsPSA.white,
+                          minimumSize: Size(double.infinity, 48),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12),
+                            side: BorderSide(color: ColorsPSA.borderSecondary),
                           ),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: ColorsPSA.white,
-                              minimumSize: Size(double.infinity, 48),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(12),
-                                side: BorderSide(
-                                  color: ColorsPSA.borderSecondary,
-                                ),
-                              ),
-                              elevation: 4,
-                              shadowColor: Colors.black.withOpacity(0.2),
-                            ),
-                            child: Text(
-                              'Add to Collection',
-                              style: TextStyle(
-                                color: ColorsPSA.textPrimary,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
+                          elevation: 4,
+                          shadowColor: Colors.black.withOpacity(0.2),
+                        ),
+                        child: Text(
+                          'Add to Collection',
+                          style: TextStyle(
+                            color: ColorsPSA.textPrimary,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ),
-                      Flexible(
-                        child: ListView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          itemCount: 8,
-                          padding: EdgeInsets.zero,
-                          shrinkWrap: true,
-                          itemBuilder: (context, index) {
-                            return Slidable(
-                              startActionPane: ActionPane(
-                                motion: const ScrollMotion(),
-                                children: [
-                                  SlidableAction(
-                                    onPressed: (context) {
-                                      Navigator.of(context).push(
-                                        SlideTransitionFromBottom(
-                                          page: ConfirmationPage(),
-                                        ),
-                                      );
-                                    },
-                                    backgroundColor: ColorsPSA.surfaceInvert,
-                                    foregroundColor: Colors.white,
-                                    label: 'Submit for grading',
-                                  ),
-                                ],
-                              ),
-                              endActionPane: ActionPane(
-                                motion: const ScrollMotion(),
-                                children: [
-                                  SlidableAction(
-                                    onPressed: (context) {
-                                      Navigator.of(context).push(
-                                        SlideTransitionFromBottom(
-                                          page: ConfirmationPage(),
-                                        ),
-                                      );
-                                    },
-                                    backgroundColor: ColorsPSA.surfaceInvert,
-                                    foregroundColor: Colors.white,
-                                    label: 'Submit for grading',
-                                  ),
-                                ],
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  cardsAction(index, context);
-                                },
-                                child: ShowUp(
-                                  delay: delayAmount + (index * 50),
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: 8,
-                                      horizontal: 16,
+                    ),
+                  ),
+                  Flexible(
+                    child: ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: 16,
+                      padding: EdgeInsets.zero,
+                      itemBuilder: (context, index) {
+                        return Slidable(
+                          startActionPane: ActionPane(
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  Navigator.of(context).push(
+                                    SlideTransitionFromBottom(
+                                      page: ConfirmationPage(),
                                     ),
-                                    child: Row(
-                                      children: [
-                                        Shimmer(
-                                          duration: Duration(seconds: 3),
-                                          interval: Duration(seconds: 0),
-                                          child: Image.asset(
-                                            pokemonCardsImages[index],
-                                            width: 64,
-                                            height: 88,
-                                            fit: BoxFit.fitHeight,
+                                  );
+                                },
+                                backgroundColor: ColorsPSA.surfaceInvert,
+                                foregroundColor: Colors.white,
+                                label: 'Submit for grading',
+                              ),
+                            ],
+                          ),
+                          endActionPane: ActionPane(
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  Navigator.of(context).push(
+                                    SlideTransitionFromBottom(
+                                      page: ConfirmationPage(),
+                                    ),
+                                  );
+                                },
+                                backgroundColor: ColorsPSA.surfaceInvert,
+                                foregroundColor: Colors.white,
+                                label: 'Submit for grading',
+                              ),
+                            ],
+                          ),
+                          child: GestureDetector(
+                            onTap: () {
+                              cardsAction(index, context);
+                            },
+                            child: ShowUp(
+                              delay: delayAmount + (index * 50),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  vertical: 8,
+                                  horizontal: 16,
+                                ),
+                                child: Row(
+                                  children: [
+                                    Shimmer(
+                                      duration: Duration(seconds: 3),
+                                      interval: Duration(seconds: 0),
+                                      child: Image.asset(
+                                        pokemonCardsImages[index],
+                                        width: 64,
+                                        height: 88,
+                                        fit: BoxFit.fitHeight,
+                                      ),
+                                    ),
+                                    SizedBox(width: 16),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            'UNGRADED',
+                                            style: TextStyle(
+                                              color: ColorsPSA.textTertiary,
+                                              fontWeight: FontWeight.w800,
+                                              fontSize: 12,
+                                            ),
                                           ),
-                                        ),
-                                        SizedBox(width: 16),
-                                        Expanded(
-                                          child: Column(
-                                            crossAxisAlignment:
-                                                CrossAxisAlignment.start,
+                                          SizedBox(height: 4),
+                                          Text(
+                                            pokemonCards[index],
+                                            style: TextStyle(
+                                              color: ColorsPSA.textPrimary,
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                          SizedBox(height: 4),
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.start,
                                             children: [
                                               Text(
-                                                'UNGRADED',
-                                                style: TextStyle(
-                                                  color: ColorsPSA.textTertiary,
-                                                  fontWeight: FontWeight.w800,
-                                                  fontSize: 12,
-                                                ),
-                                              ),
-                                              SizedBox(height: 4),
-                                              Text(
-                                                pokemonCards[index],
+                                                pokemonCardsValue[index],
                                                 style: TextStyle(
                                                   color: ColorsPSA.textPrimary,
-                                                  fontWeight: FontWeight.w600,
-                                                  fontSize: 14,
+                                                  fontWeight: FontWeight.w800,
+                                                  fontSize: 16,
                                                 ),
                                               ),
-                                              SizedBox(height: 4),
-                                              Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.start,
-                                                children: [
-                                                  Text(
-                                                    pokemonCardsValue[index],
-                                                    style: TextStyle(
-                                                      color:
-                                                          ColorsPSA.textPrimary,
-                                                      fontWeight:
-                                                          FontWeight.w800,
-                                                      fontSize: 16,
-                                                    ),
-                                                  ),
-                                                  SizedBox(width: 6),
-                                                  Icon(
-                                                    pokemonCardsValueChangeIcons[index],
-                                                    color:
-                                                        pokemonCardsValueChangeColors[index],
-                                                    size: 16,
-                                                  ),
-                                                  Countup(
-                                                    begin: 0,
-                                                    end:
-                                                        pokemonCardsValueChange[index],
-                                                    duration: Duration(
-                                                      seconds: 1,
-                                                    ),
-                                                    separator: '.',
-                                                    suffix: "%",
-                                                    style: TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      color:
-                                                          pokemonCardsValueChangeColors[index],
-                                                    ),
-                                                  ),
-                                                ],
+                                              SizedBox(width: 6),
+                                              Icon(
+                                                pokemonCardsValueChangeIcons[index],
+                                                color:
+                                                    pokemonCardsValueChangeColors[index],
+                                                size: 16,
+                                              ),
+                                              Countup(
+                                                begin: 0,
+                                                end:
+                                                    pokemonCardsValueChange[index],
+                                                duration: Duration(seconds: 1),
+                                                separator: '.',
+                                                suffix: "%",
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.bold,
+                                                  color:
+                                                      pokemonCardsValueChangeColors[index],
+                                                ),
                                               ),
                                             ],
                                           ),
-                                        ),
-                                      ],
+                                        ],
+                                      ),
                                     ),
-                                  ),
+                                  ],
                                 ),
                               ),
-                            );
-                          },
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              Center(child: Text('Vault Page')),
+              Center(child: Text('Selling Page')),
+              Center(child: Text('Sold Page')),
+            ],
+          ),
+        ),
+        bottomNavigationBar: SafeArea(
+          bottom: Platform.isIOS ? false : true,
+          child: ScrollToHideWidget(
+            controller: controller,
+            child: Container(
+              height: Platform.isIOS ? 96 : 72,
+              padding: EdgeInsets.only(top: 8, bottom: 8),
+              decoration: BoxDecoration(
+                color: ColorsPSA.surfacePrimary,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.1),
+                    spreadRadius: 1,
+                    blurRadius: 3,
+                    offset: Offset(0, -6), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Column(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/orders.svg',
+                        width: 32,
+                        height: 32,
+                      ),
+                      Text(
+                        'Orders',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12, // Smaller font size
                         ),
                       ),
                     ],
                   ),
-                  Center(child: Text('Vault Page')),
-                  Center(child: Text('Selling Page')),
-                  Center(child: Text('Sold Page')),
-                ],
-              ),
-            ),
-          ],
-        ),
-        bottomNavigationBar: ScrollToHideWidget(
-          controller: controller,
-          child: Container(
-            height: Platform.isIOS ? 96 : 72,
-            padding: EdgeInsets.only(top: 8, bottom: 8),
-            decoration: BoxDecoration(
-              color: ColorsPSA.surfacePrimary,
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.1),
-                  spreadRadius: 1,
-                  blurRadius: 3,
-                  offset: Offset(0, -6), // changes position of shadow
-                ),
-              ],
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Column(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/orders.svg',
-                      width: 32,
-                      height: 32,
-                    ),
-                    Text(
-                      'Orders',
-                      style: TextStyle(
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.of(
+                        context,
+                      ).push(CustomAnimatedRoute(enterWidget: CameraScreen()));
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
                         color: Colors.black,
-                        fontSize: 12, // Smaller font size
                       ),
-                    ),
-                  ],
-                ),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.of(
-                      context,
-                    ).push(CustomAnimatedRoute(enterWidget: CameraScreen()));
-                  },
-                  child: Container(
-                    height: 48,
-                    width: 48,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.black,
-                    ),
-                    padding: EdgeInsets.all(12),
-                    child: SvgPicture.asset(
-                      'assets/icons/scan-camera.svg',
-                      width: 24,
-                      height: 24,
+                      padding: EdgeInsets.all(12),
+                      child: SvgPicture.asset(
+                        'assets/icons/scan-camera.svg',
+                        width: 24,
+                        height: 24,
+                      ),
                     ),
                   ),
-                ),
-                Column(
-                  children: [
-                    SvgPicture.asset(
-                      'assets/icons/collections.svg',
-                      width: 32,
-                      height: 32,
-                    ),
-                    Text(
-                      'Collection',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 12, // Smaller font size
+                  Column(
+                    children: [
+                      SvgPicture.asset(
+                        'assets/icons/collections.svg',
+                        width: 32,
+                        height: 32,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Text(
+                        'Collection',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 12, // Smaller font size
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
